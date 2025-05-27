@@ -1,0 +1,202 @@
+{
+  "directed": true,
+  "graph": {},
+  "links": [
+    {
+      "child": "solid(1)",
+      "from_bag": false,
+      "is_transformation_calibrated": false,
+      "joint_name": "wheel4",
+      "joint_params_calibrated": null,
+      "parent": "base_link",
+      "source": "base_link",
+      "target": "solid(1)",
+      "type": "continuous",
+      "weight": 1
+    },
+    {
+      "child": "solid(1)_0",
+      "from_bag": false,
+      "is_transformation_calibrated": false,
+      "joint_name": "wheel3",
+      "joint_params_calibrated": null,
+      "parent": "base_link",
+      "source": "base_link",
+      "target": "solid(1)_0",
+      "type": "continuous",
+      "weight": 1
+    },
+    {
+      "child": "wheel2",
+      "from_bag": false,
+      "is_transformation_calibrated": false,
+      "joint_name": "wheel2",
+      "joint_params_calibrated": null,
+      "parent": "base_link",
+      "source": "base_link",
+      "target": "wheel2",
+      "type": "continuous",
+      "weight": 1
+    },
+    {
+      "child": "solid",
+      "from_bag": false,
+      "is_transformation_calibrated": false,
+      "joint_name": "wheel1",
+      "joint_params_calibrated": null,
+      "parent": "base_link",
+      "source": "base_link",
+      "target": "solid",
+      "type": "continuous",
+      "weight": 1
+    },
+    {
+      "child": "ds_right",
+      "from_bag": false,
+      "is_transformation_calibrated": false,
+      "joint_name": "base_link_ds_right_joint",
+      "joint_params_calibrated": null,
+      "parent": "base_link",
+      "source": "base_link",
+      "target": "ds_right",
+      "type": "fixed",
+      "weight": 1
+    },
+    {
+      "child": "ds_left",
+      "from_bag": false,
+      "is_transformation_calibrated": false,
+      "joint_name": "base_link_ds_left_joint",
+      "joint_params_calibrated": null,
+      "parent": "base_link",
+      "source": "base_link",
+      "target": "ds_left",
+      "type": "fixed",
+      "weight": 1
+    },
+    {
+      "child": "accelerometer",
+      "from_bag": false,
+      "is_transformation_calibrated": true,
+      "joint_name": "base_link_accelerometer_joint",
+      "joint_params_calibrated": null,
+      "parent": "base_link",
+      "source": "base_link",
+      "target": "accelerometer",
+      "type": "fixed",
+      "weight": 1
+    },
+    {
+      "child": "gyroscope",
+      "from_bag": false,
+      "is_transformation_calibrated": false,
+      "joint_name": "base_link_gyroscope_joint",
+      "joint_params_calibrated": null,
+      "parent": "base_link",
+      "source": "base_link",
+      "target": "gyroscope",
+      "type": "fixed",
+      "weight": 1
+    },
+    {
+      "child": "pattern_link",
+      "from_bag": false,
+      "is_transformation_calibrated": true,
+      "joint_name": null,
+      "joint_params_calibrated": null,
+      "parent": "world",
+      "source": "world",
+      "target": "pattern_link",
+      "type": "fixed",
+      "weight": 1
+    },
+    {
+      "child": "base_link",
+      "from_bag": true,
+      "is_transformation_calibrated": false,
+      "parent": "world",
+      "source": "world",
+      "target": "base_link",
+      "type": "multiple",
+      "weight": 1
+    }
+  ],
+  "multigraph": false,
+  "nodes": [
+    {
+      "from_bag": false,
+      "id": "base_link",
+      "is_world": false,
+      "pattern": null,
+      "sensor_data": null
+    },
+    {
+      "from_bag": false,
+      "id": "solid(1)",
+      "is_world": false,
+      "pattern": null,
+      "sensor_data": null
+    },
+    {
+      "from_bag": false,
+      "id": "solid(1)_0",
+      "is_world": false,
+      "pattern": null,
+      "sensor_data": null
+    },
+    {
+      "from_bag": false,
+      "id": "wheel2",
+      "is_world": false,
+      "pattern": null,
+      "sensor_data": null
+    },
+    {
+      "from_bag": false,
+      "id": "solid",
+      "is_world": false,
+      "pattern": null,
+      "sensor_data": null
+    },
+    {
+      "from_bag": false,
+      "id": "ds_right",
+      "is_world": false,
+      "pattern": null,
+      "sensor_data": null
+    },
+    {
+      "from_bag": false,
+      "id": "ds_left",
+      "is_world": false,
+      "pattern": null,
+      "sensor_data": null
+    },
+    {
+      "from_bag": false,
+      "id": "accelerometer",
+      "is_world": false,
+      "pattern": null,
+      "sensor_data": "imu_chassis"
+    },
+    {
+      "from_bag": false,
+      "id": "gyroscope",
+      "is_world": false,
+      "pattern": null,
+      "sensor_data": null
+    },
+    {
+      "id": "pattern_link",
+      "is_world": false,
+      "pattern": "pattern_1",
+      "sensor_data": null
+    },
+    {
+      "id": "world",
+      "is_world": true,
+      "pattern": null,
+      "sensor_data": null
+    }
+  ]
+}

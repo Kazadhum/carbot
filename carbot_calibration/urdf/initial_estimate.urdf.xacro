@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<robot name="/home/diogo/catkin_ws/src/robots/carbot/carbot_description/urdf/carbot.urdf" xmlns:xacro="http://ros.org/wiki/xacro">
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <box size="0.2 0.1 0.05"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.2 0.1 0.05"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="wheel4" type="continuous">
+    <parent link="base_link"/>
+    <child link="solid(1)"/>
+    <axis xyz="0 -0.000004 -1"/>
+    <limit effort="10" velocity="10"/>
+    <origin xyz="-0.05 -0.06 0" rpy="1.5708 0 0"/>
+  </joint>
+  <link name="solid(1)">
+    <visual>
+      <geometry>
+        <cylinder radius="0.04" length="0.02"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.04" length="0.02"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="wheel3" type="continuous">
+    <parent link="base_link"/>
+    <child link="solid(1)_0"/>
+    <axis xyz="0 -0.000004 -1"/>
+    <limit effort="10" velocity="10"/>
+    <origin xyz="-0.05 0.06 0" rpy="1.5708 0 0"/>
+  </joint>
+  <link name="solid(1)_0">
+    <visual>
+      <geometry>
+        <cylinder radius="0.04" length="0.02"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.04" length="0.02"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="wheel2" type="continuous">
+    <parent link="base_link"/>
+    <child link="wheel2"/>
+    <axis xyz="0 -0.000004 -1"/>
+    <limit effort="10" velocity="10"/>
+    <origin xyz="0.05 -0.06 0" rpy="1.5708 0 0"/>
+  </joint>
+  <link name="wheel2">
+    <visual>
+      <geometry>
+        <cylinder radius="0.04" length="0.02"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.04" length="0.02"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="wheel1" type="continuous">
+    <parent link="base_link"/>
+    <child link="solid"/>
+    <axis xyz="0 -0.000004 -1"/>
+    <limit effort="10" velocity="10"/>
+    <origin xyz="0.05 0.06 0" rpy="1.5708 0 0"/>
+  </joint>
+  <link name="solid">
+    <visual>
+      <geometry>
+        <cylinder radius="0.04" length="0.02"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.04" length="0.02"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="ds_right">
+  </link>
+  <joint name="base_link_ds_right_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="ds_right"/>
+    <origin xyz="0.105087 -0.032507 0" rpy="0 0 -0.3"/>
+  </joint>
+  <link name="ds_left">
+  </link>
+  <joint name="base_link_ds_left_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="ds_left"/>
+    <origin xyz="0.105087 0.032507 0" rpy="0 0 0.3"/>
+  </joint>
+  <link name="accelerometer">
+  </link>
+  <joint name="base_link_accelerometer_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="accelerometer"/>
+    <origin xyz="0 0 0.03" rpy="0 0 0"/>
+  </joint>
+  <link name="gyroscope">
+  </link>
+  <joint name="base_link_gyroscope_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="gyroscope"/>
+    <origin xyz="0 0 0.03" rpy="0 0 0"/>
+  </joint>
+</robot>

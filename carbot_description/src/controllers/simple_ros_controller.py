@@ -84,7 +84,7 @@ while robot.step(timestep) != -1 and not rospy.is_shutdown():
     
     # Header
     msg.header.stamp = rospy.Time.now()
-    msg.header.frame_id = ''
+    msg.header.frame_id = 'accelerometer'
 
     # Orientation (ignore)
     msg.orientation = Quaternion(0, 0, 0, 1)
