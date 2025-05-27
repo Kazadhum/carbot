@@ -17,6 +17,7 @@ from std_msgs.msg import Float64
 from sensor_msgs.msg import Imu
 import os
 import tf
+from rosgraph_msgs.msg import Clock
 
 # create the Robot instance.
 robot = Supervisor()
@@ -51,6 +52,8 @@ robot_rot = robot_node.getField("rotation")
 
 br = tf.TransformBroadcaster()
 
+# Clock publisher
+clock_pub = rospy.Publisher(name='clock', data_class=Clock, queue_size=1)
 
 t = 0
 # Main loop:
@@ -114,6 +117,15 @@ while robot.step(timestep) != -1 and not rospy.is_shutdown():
         "world"                          # or "map"
     )
 
+    # Publish /clock
+    sim_time = robot.getTime()
+    secs = int(sim_time)
+    nsecs = int((sim_time - secs) * 1e9)
+
+    clock_msg = Clock()
+    clock_msg.clock.secs = secs
+    clock_msg.clock.nsecs = nsecs
+    clock_pub.publish(clock_msg)
 
     # Enter here functions to send actuator commands, like:
     #  motor.setPosition(10.0)
