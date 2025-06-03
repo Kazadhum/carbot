@@ -35,8 +35,8 @@
 description_file: "package://carbot_description/urdf/carbot.urdf"
 
 # The calibration framework requires a bagfile to extract the necessary data for the calibration.
-bag_file: "$ROS_BAGS/carbot/x_move.bag"
 
+bag_file: "$ROS_BAGS/carbot/full_move.bag"
 # You must define a frame of reference for the optimization process.
 # It must exist in the transformation chains of all the sensors which are being calibrated.
 world_link: "world"

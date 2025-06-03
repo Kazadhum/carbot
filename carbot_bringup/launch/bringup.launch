@@ -13,7 +13,7 @@
   <env name="LD_LIBRARY_PATH" value="$(env LD_LIBRARY_PATH):$(env WEBOTS_HOME)/lib/controller"/>
   <env name="PYTHONPATH" value="$(env PYTHONPATH):$(env WEBOTS_HOME)/lib/controller/python"/>
 
-  <node name="webots_ros_python" pkg="carbot_description" type="simple_ros_controller.py" required="$(arg auto_close)"/>
+  <node name="webots_ros_python" pkg="carbot_description" type="full_move.py" required="$(arg auto_close)"/>
 
   <!-- Publish robot_state from URDF -->
   <param name="robot_description" command="$(find xacro)/xacro '$(find carbot_description)/urdf/carbot.urdf'" />
