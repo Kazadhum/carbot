@@ -3,26 +3,26 @@
   "graph": {},
   "links": [
     {
-      "child": "solid(1)",
+      "child": "wheel4",
       "from_bag": false,
       "is_transformation_calibrated": false,
       "joint_name": "wheel4",
       "joint_params_calibrated": null,
       "parent": "base_link",
       "source": "base_link",
-      "target": "solid(1)",
+      "target": "wheel4",
       "type": "continuous",
       "weight": 1
     },
     {
-      "child": "solid(1)_0",
+      "child": "wheel3",
       "from_bag": false,
       "is_transformation_calibrated": false,
       "joint_name": "wheel3",
       "joint_params_calibrated": null,
       "parent": "base_link",
       "source": "base_link",
-      "target": "solid(1)_0",
+      "target": "wheel3",
       "type": "continuous",
       "weight": 1
     },
@@ -39,14 +39,14 @@
       "weight": 1
     },
     {
-      "child": "solid",
+      "child": "wheel1",
       "from_bag": false,
       "is_transformation_calibrated": false,
       "joint_name": "wheel1",
       "joint_params_calibrated": null,
       "parent": "base_link",
       "source": "base_link",
-      "target": "solid",
+      "target": "wheel1",
       "type": "continuous",
       "weight": 1
     },
@@ -132,14 +132,14 @@
     },
     {
       "from_bag": false,
-      "id": "solid(1)",
+      "id": "wheel4",
       "is_world": false,
       "pattern": null,
       "sensor_data": null
     },
     {
       "from_bag": false,
-      "id": "solid(1)_0",
+      "id": "wheel3",
       "is_world": false,
       "pattern": null,
       "sensor_data": null
@@ -153,7 +153,7 @@
     },
     {
       "from_bag": false,
-      "id": "solid",
+      "id": "wheel1",
       "is_world": false,
       "pattern": null,
       "sensor_data": null

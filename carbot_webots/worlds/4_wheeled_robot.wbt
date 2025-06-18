@@ -5,11 +5,12 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/floors/protos/Floor.proto"
 
 WorldInfo {
+  basicTimeStep 4
   FPS 144
 }
 Viewpoint {
-  orientation -0.12566477761093767 -0.027269347228038535 0.9916979108426871 3.565542644199331
-  position 1.7488730901792067 0.7394910657232858 0.527505392822599
+  orientation -0.23871953552692393 -0.07105937660476312 0.9684851823101642 3.7029564158725643
+  position 11.005946918556031 7.458099134920354 5.8564795585941285
 }
 TexturedBackground {
 }
@@ -18,7 +19,7 @@ TexturedBackgroundLight {
 Floor {
 }
 Robot {
-  translation 0 0 0.04
+  translation 0 0 21.4
   children [
     Gyro {
       translation 0 0 0.03
@@ -123,6 +124,7 @@ Robot {
             }
           }
         ]
+        name "wheel1"
         boundingObject USE WHEEL
         physics Physics {
         }
@@ -166,7 +168,7 @@ Robot {
         children [
           USE WHEEL
         ]
-        name "solid(1)"
+        name "wheel3"
         boundingObject USE WHEEL
         physics Physics {
         }
@@ -188,7 +190,7 @@ Robot {
         children [
           USE WHEEL
         ]
-        name "solid(1)"
+        name "wheel4"
         boundingObject USE WHEEL
         physics Physics {
         }
