@@ -3,14 +3,15 @@
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackground.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/floors/protos/Floor.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/obstacles/protos/Ramp30deg.proto"
 
 WorldInfo {
   basicTimeStep 4
   FPS 144
 }
 Viewpoint {
-  orientation -0.23871953552692393 -0.07105937660476312 0.9684851823101642 3.7029564158725643
-  position 11.005946918556031 7.458099134920354 5.8564795585941285
+  orientation 0.006668415165676704 -0.0071815584209054375 -0.9999519775758361 4.7860878412723
+  position 0.11540158177825306 -1.5563244896440103 0.25757708401220664
 }
 TexturedBackground {
 }
@@ -18,11 +19,37 @@ TexturedBackgroundLight {
 }
 Floor {
 }
-Robot {
-  translation 0 0 21.4
+Ramp30deg {
+  translation 3.2 -2 0
+  name "ramp 30 degrees(1)"
+}
+Ramp30deg {
+  translation 3.2 2 0
+  name "ramp 30 degrees(2)"
+}
+Ramp30deg {
+  translation -2.96 0 0
+  rotation 0 1 0 0
+  name "ramp 30 degrees(3)"
+}
+Ramp30deg {
+  translation -2.96 2 0
+  rotation 0 1 0 0
+  name "ramp 30 degrees(4)"
+}
+Ramp30deg {
+  translation -2.96 -2 0
+  rotation 0 1 0 0
+  name "ramp 30 degrees(5)"
+}
+Ramp30deg {
+  translation 3.2 0 0
+}
+DEF CARBOT Robot {
+  translation 0 0.48 0.04
   children [
     Gyro {
-      translation 0 0 0.03
+      translation 0 0 0.015
       children [
         Shape {
           appearance PBRAppearance {
@@ -34,13 +61,12 @@ Robot {
           }
         }
       ]
-      name "gyroscope"
       boundingObject USE GYRO_GEOMETRY
       physics Physics {
       }
     }
     Accelerometer {
-      translation 0 0 0.03
+      translation 0 0 0.015
       children [
         Shape {
           appearance PBRAppearance {
@@ -95,7 +121,7 @@ Robot {
         metalness 0
       }
       geometry Box {
-        size 0.2 0.1 0.05
+        size 0.2 0.1 0.02
       }
     }
     HingeJoint {
@@ -200,6 +226,23 @@ Robot {
   boundingObject USE BODY
   physics Physics {
   }
-  controller "<extern>"
+  controller "ros"
+  controllerArgs [
+    "--use-sim-time"
+    "--clock"
+  ]
+  synchronization FALSE
+}
+Robot {
+  name "supervisor_robot_control"
+  controller "supervisor_robot_control"
   supervisor TRUE
+  synchronization FALSE
+}
+Robot {
+  translation 0.1 0 0.1
+  name "world_base_link_tf_pub"
+  controller "world_base_link_tf_pub"
+  supervisor TRUE
+  synchronization FALSE
 }
