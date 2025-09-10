@@ -11,6 +11,7 @@ from scipy.spatial.transform import Rotation
 # create the Robot instance.
 supervisor = Supervisor()
 robot_node = supervisor.getFromDef("CARBOT")
+world_node = supervisor.getFromDef("WORLD_DUMMY")
 
 rospy.init_node(name="world_base_link_tf_pub", anonymous=True)
 

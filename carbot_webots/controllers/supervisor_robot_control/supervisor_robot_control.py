@@ -21,6 +21,7 @@ service_dict = {}
 for wheel_name in wheel_names:
     rospy.wait_for_service(service=f"/{wheel_name}/set_position")
     rospy.wait_for_service(service=f"/{wheel_name}/set_velocity")
+    rospy.wait_for_service(service=f"/{wheel_name}/set_torque")
 
     service_dict[f"{wheel_name}_set_position"] = rospy.ServiceProxy(
         name=f"/{wheel_name}/set_position",
@@ -32,28 +33,34 @@ for wheel_name in wheel_names:
         service_class=set_float,
     )
 
+    service_dict[f"{wheel_name}_set_torque"] = rospy.ServiceProxy(
+        name=f"/{wheel_name}/set_torque",
+        service_class=set_float,
+    )
+
     # Set inicial values
     service_dict[f"{wheel_name}_set_position"](value=9999999999)
-    service_dict[f"{wheel_name}_set_velocity"](value=0.1)
+    service_dict[f"{wheel_name}_set_velocity"](value=0)
+    service_dict[f"{wheel_name}_set_torque"](value=0)
 
 # Main loop:
 while supervisor.step(timestep) != -1 and not rospy.is_shutdown():
 
     t = supervisor.getTime()  # Convert the elapsed time from milisecs to secs
 
-    if t < 1:
-        vel = [0, 0]
-    elif t > 1 and t < 10:
-        vel = [5, 5]
-    elif t > 10 and t < 20:
-        vel = [1, 5]
-    elif t > 20 and t < 30:
-        vel = [0, 4]
-    elif t > 30:
-        vel = [0,0]
+    if t > 1 and t < 1.5:
+        trq = [0.01, 0.01]
+    elif t > 1.5 and t < 4:
+        trq = [0.02, 0.02]
+    elif t > 4 and t < 6:
+        trq = [0.05, 0]
+    # elif t > 30:
+    #     vel = [0,0]
+    else:
+        trq = [0, 0]
 
     for wheel_name in [wheel_names[0], wheel_names[2]]:
-        service_dict[f"{wheel_name}_set_velocity"](value=vel[0])
+        service_dict[f"{wheel_name}_set_torque"](value=trq[0])
 
     for wheel_name in [wheel_names[1], wheel_names[3]]:
-        service_dict[f"{wheel_name}_set_velocity"](value=vel[1])
+        service_dict[f"{wheel_name}_set_torque"](value=trq[1])
