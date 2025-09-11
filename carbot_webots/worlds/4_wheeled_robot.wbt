@@ -8,10 +8,14 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/project
 WorldInfo {
   basicTimeStep 8
   FPS 144
+  contactProperties [
+    ContactProperties {
+    }
+  ]
 }
 Viewpoint {
-  orientation 0.1956252360405105 -0.21488341519540013 -0.9568468450583175 4.762140454464904
-  position 0.10889276993800553 -4.581918028532758 2.2580622839455544
+  orientation 0.14414408969216855 -0.16483999742753586 -0.9757306270968981 4.8217486084199095
+  position -2.1796421545074143 -3.909687602890902 2.401549653843511
 }
 TexturedBackground {
 }
@@ -46,7 +50,8 @@ Ramp30deg {
   translation 3.2 0 0
 }
 DEF CARBOT Robot {
-  translation 0 0.48 0.04
+  translation -2.3 0.480011 1.04
+  rotation 0 0 1 -5.307179586466759e-06
   children [
     Gyro {
       translation 0 0 0.015
@@ -231,12 +236,13 @@ DEF CARBOT Robot {
     "--use-sim-time"
     "--clock"
   ]
+  supervisor TRUE
   synchronization FALSE
 }
 Robot {
   rotation 0 1 0 0
-  name "supervisor_robot_control"
-  controller "supervisor_robot_control"
+  name "supervisor_force_torque_applier"
+  controller "supervisor_force_torque_applier"
   supervisor TRUE
   synchronization FALSE
 }

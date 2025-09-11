@@ -1,0 +1,2 @@
+float32 duration
+geometry_msgs/Vector3 force
