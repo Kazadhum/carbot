@@ -3,19 +3,14 @@
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackground.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/floors/protos/Floor.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/obstacles/protos/Ramp30deg.proto"
 
 WorldInfo {
-  basicTimeStep 8
-  FPS 144
-  contactProperties [
-    ContactProperties {
-    }
-  ]
+  basicTimeStep 4
+  FPS 165
 }
 Viewpoint {
-  orientation 0.14414408969216855 -0.16483999742753586 -0.9757306270968981 4.8217486084199095
-  position -2.1796421545074143 -3.909687602890902 2.401549653843511
+  orientation 0.09594699500568744 -0.10862285824368474 -0.9894418875388038 4.82559575478883
+  position -0.348822655008188 -14.062463849883567 3.367580205225637
 }
 TexturedBackground {
 }
@@ -23,69 +18,71 @@ TexturedBackgroundLight {
 }
 Floor {
 }
-Ramp30deg {
-  translation 3.2 -2 0
-  name "ramp 30 degrees(1)"
-}
-Ramp30deg {
-  translation 3.2 2 0
-  name "ramp 30 degrees(2)"
-}
-Ramp30deg {
-  translation -2.96 0 0
-  rotation 0 1 0 0
-  name "ramp 30 degrees(3)"
-}
-Ramp30deg {
-  translation -2.96 2 0
-  rotation 0 1 0 0
-  name "ramp 30 degrees(4)"
-}
-Ramp30deg {
-  translation -2.96 -2 0
-  rotation 0 1 0 0
-  name "ramp 30 degrees(5)"
-}
-Ramp30deg {
-  translation 3.2 0 0
-}
 DEF CARBOT Robot {
-  translation -2.3 0.480011 1.04
+  translation -2.3 0.480011 0.04
   rotation 0 0 1 -5.307179586466759e-06
   children [
-    Gyro {
-      translation 0 0 0.015
+    DEF MAIN_CAR_BODY Solid {
       children [
-        Shape {
+        DEF BODY Shape {
           appearance PBRAppearance {
-            baseColor 0.333333 1 1
+            baseColor 0.8 0 0
             metalness 0
           }
-          geometry DEF GYRO_GEOMETRY Box {
-            size 0.01 0.01 0.01
+          geometry Box {
+            size 0.2 0.1 0.02
           }
         }
       ]
-      boundingObject USE GYRO_GEOMETRY
+      boundingObject USE BODY
       physics Physics {
       }
     }
-    Accelerometer {
-      translation 0 0 0.015
+    Robot {
       children [
-        Shape {
-          appearance PBRAppearance {
-            baseColor 0.333333 1 1
-            metalness 0
+        Accelerometer {
+          translation 0 0 0.015
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.333333 1 1
+                metalness 0
+              }
+              geometry DEF IMU_GEOMETRY Box {
+                size 0.01 0.01 0.01
+              }
+            }
+          ]
+          boundingObject USE IMU_GEOMETRY
+          physics Physics {
           }
-          geometry DEF IMU_GEOMETRY Box {
-            size 0.01 0.01 0.01
+        }
+        Gyro {
+          translation 0 0 0.015
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.333333 1 1
+                metalness 0
+              }
+              geometry DEF GYRO_GEOMETRY Box {
+                size 0.01 0.01 0.01
+              }
+            }
+          ]
+          boundingObject USE GYRO_GEOMETRY
+          physics Physics {
           }
         }
       ]
-      boundingObject USE IMU_GEOMETRY
+      name "imu"
       physics Physics {
       }
+      controller "ros"
+      controllerArgs [
+        "--clock"
+        "--use-sim-time"
+      ]
     }
     DistanceSensor {
       translation 0.105087 0.0325072 0
@@ -119,16 +116,6 @@ DEF CARBOT Robot {
       physics Physics {
       }
     }
-    DEF BODY Shape {
-      appearance PBRAppearance {
-        baseColor 1 0.0117647 0.0117647
-        roughness 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.1 0.02
-      }
-    }
     HingeJoint {
       jointParameters HingeJointParameters {
         axis 0 1 0
@@ -140,8 +127,8 @@ DEF CARBOT Robot {
         }
       ]
       endPoint DEF WHEEL1 Solid {
-        translation 0.05 0.06 0
-        rotation 1 0 0 1.5708
+        translation 0.05000000045014565 0.060000000274105014 5.408415775943068e-06
+        rotation 1 3.366429293122923e-12 -3.2872650238836155e-12 1.5708000007939522
         children [
           DEF WHEEL Shape {
             appearance PBRAppearance {
@@ -172,8 +159,8 @@ DEF CARBOT Robot {
         }
       ]
       endPoint Solid {
-        translation 0.05 -0.06 0
-        rotation 1 0 0 1.5708
+        translation 0.04999656604215935 -0.06000000008445555 1.959394277426722e-06
+        rotation 0.999999999999439 -7.488923563815116e-07 7.490766169912509e-07 1.5707999999785165
         children [
           USE WHEEL
         ]
@@ -194,8 +181,8 @@ DEF CARBOT Robot {
         }
       ]
       endPoint Solid {
-        translation -0.05 0.06 0
-        rotation 1 0 0 1.5708
+        translation -0.050000000123442814 0.05999999995401828 5.055511932066952e-06
+        rotation 1 -1.4321267775256102e-11 1.4324105141491362e-11 1.5708000000418674
         children [
           USE WHEEL
         ]
@@ -216,8 +203,8 @@ DEF CARBOT Robot {
         }
       ]
       endPoint Solid {
-        translation -0.05 -0.06 0
-        rotation 1 0 0 1.5708
+        translation -0.05000340770365371 -0.060000000083814065 1.9286145760965435e-06
+        rotation 0.999999999999439 -7.489097984281092e-07 7.490936505005412e-07 1.5707999999784825
         children [
           USE WHEEL
         ]
@@ -228,21 +215,26 @@ DEF CARBOT Robot {
       }
     }
   ]
-  boundingObject USE BODY
+  boundingObject DEF BODY Shape {
+    appearance PBRAppearance {
+      baseColor 1 0.0117647 0.0117647
+      roughness 1
+      metalness 0
+    }
+    geometry DEF BODY_GEOM Box {
+      size 0.2 0.1 0.02
+    }
+  }
   physics Physics {
   }
-  controller "ros"
-  controllerArgs [
-    "--use-sim-time"
-    "--clock"
-  ]
+  controller "plain_wheel_controller"
   supervisor TRUE
   synchronization FALSE
 }
 Robot {
   rotation 0 1 0 0
   name "supervisor_force_torque_applier"
-  controller "supervisor_force_torque_applier"
+  controller "<none>"
   supervisor TRUE
   synchronization FALSE
 }
@@ -255,4 +247,21 @@ Robot {
 }
 DEF WORLD_DUMMY Solid {
   name "world"
+}
+Solid {
+  translation -1.12672 0 0.087972
+  rotation 0 1 0 -0.1
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.333333 0.341176 0.32549
+        metalness 0
+      }
+      geometry DEF RAMP Plane {
+        size 2 10
+      }
+    }
+  ]
+  name "ramp"
+  boundingObject USE RAMP
 }

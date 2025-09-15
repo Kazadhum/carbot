@@ -32,7 +32,7 @@
 #   - ROS Package Reference
 #       Example: package://your_package/urdf/description.urdf.xacro
 #
-description_file: "package://carbot_description/urdf/carbot.urdf"
+description_file: "package://carbot_description/urdf/carbot2.urdf"
 
 # The calibration framework requires a bagfile to extract the necessary data for the calibration.
 

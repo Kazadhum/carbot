@@ -1,19 +1,19 @@
 <?xml version="1.0" ?>
-<robot name="/home/diogo/catkin_ws/src/robots/carbot/carbot_description/urdf/carbot.urdf" version="1.0">
+<robot name="/home/diogo/catkin_ws/src/robots/carbot/carbot_description/urdf/carbot2.urdf" version="1.0">
   <link name="base_link">
     <visual>
       <geometry>
-        <box size="0.2 0.1 0.05"/>
+        <box size="0.2 0.1 0.02"/>
       </geometry>
     </visual>
     <collision>
       <geometry>
-        <box size="0.2 0.1 0.05"/>
+        <box size="0.2 0.1 0.02"/>
       </geometry>
     </collision>
   </link>
   <joint name="wheel4" type="continuous">
-    <origin xyz="-0.05 -0.06 0.0" rpy="1.5708 0.0 0.0"/>
+    <origin xyz="-0.05 -0.06 0.0" rpy="1.5708 -1e-06 0.0"/>
     <axis xyz="0.0 -4e-06 -1.0"/>
     <parent link="base_link"/>
     <child link="wheel4"/>
@@ -21,18 +21,20 @@
   </joint>
   <link name="wheel4">
     <visual>
+      <origin xyz="-3e-06 2e-06 0.0" rpy="0.0 0.0 0.0"/>
       <geometry>
         <cylinder radius="0.04" length="0.02"/>
       </geometry>
     </visual>
     <collision>
+      <origin xyz="-3e-06 2e-06 0.0" rpy="0.0 0.0 0.0"/>
       <geometry>
         <cylinder radius="0.04" length="0.02"/>
       </geometry>
     </collision>
   </link>
   <joint name="wheel3" type="continuous">
-    <origin xyz="-0.05 0.06 0.0" rpy="1.5708 0.0 0.0"/>
+    <origin xyz="-0.050003 0.060002 0.0" rpy="1.5708 0.0 0.0"/>
     <axis xyz="0.0 -4e-06 -1.0"/>
     <parent link="base_link"/>
     <child link="wheel3"/>
@@ -40,18 +42,20 @@
   </joint>
   <link name="wheel3">
     <visual>
+      <origin xyz="0.0 5e-06 0.0" rpy="0.0 0.0 0.0"/>
       <geometry>
         <cylinder radius="0.04" length="0.02"/>
       </geometry>
     </visual>
     <collision>
+      <origin xyz="0.0 5e-06 0.0" rpy="0.0 0.0 0.0"/>
       <geometry>
         <cylinder radius="0.04" length="0.02"/>
       </geometry>
     </collision>
   </link>
   <joint name="wheel2" type="continuous">
-    <origin xyz="0.05 -0.06 0.0" rpy="1.5708 0.0 0.0"/>
+    <origin xyz="0.05 -0.059995 0.0" rpy="1.5708 -1e-06 0.0"/>
     <axis xyz="0.0 -4e-06 -1.0"/>
     <parent link="base_link"/>
     <child link="wheel2"/>
@@ -59,18 +63,20 @@
   </joint>
   <link name="wheel2">
     <visual>
+      <origin xyz="-3e-06 2e-06 0.0" rpy="0.0 0.0 0.0"/>
       <geometry>
         <cylinder radius="0.04" length="0.02"/>
       </geometry>
     </visual>
     <collision>
+      <origin xyz="-3e-06 2e-06 0.0" rpy="0.0 0.0 0.0"/>
       <geometry>
         <cylinder radius="0.04" length="0.02"/>
       </geometry>
     </collision>
   </link>
   <joint name="wheel1" type="continuous">
-    <origin xyz="0.05 0.06 0.0" rpy="1.5708 0.0 0.0"/>
+    <origin xyz="0.049997 0.060002 0.0" rpy="1.5708 0.0 0.0"/>
     <axis xyz="0.0 -4e-06 -1.0"/>
     <parent link="base_link"/>
     <child link="wheel1"/>
@@ -78,11 +84,13 @@
   </joint>
   <link name="wheel1">
     <visual>
+      <origin xyz="0.0 5e-06 0.0" rpy="0.0 0.0 0.0"/>
       <geometry>
         <cylinder radius="0.04" length="0.02"/>
       </geometry>
     </visual>
     <collision>
+      <origin xyz="0.0 5e-06 0.0" rpy="0.0 0.0 0.0"/>
       <geometry>
         <cylinder radius="0.04" length="0.02"/>
       </geometry>
@@ -90,7 +98,7 @@
   </link>
   <link name="ds_right"/>
   <joint name="base_link_ds_right_joint" type="fixed">
-    <origin xyz="0.105087 -0.032507 0.0" rpy="0.0 0.0 -0.3"/>
+    <origin xyz="0.105087 -0.032502 0.0" rpy="0.0 0.0 -0.3"/>
     <parent link="base_link"/>
     <child link="ds_right"/>
   </joint>
@@ -100,16 +108,33 @@
     <parent link="base_link"/>
     <child link="ds_left"/>
   </joint>
+  <link name="gyro"/>
+  <joint name="base_link_gyro_joint" type="fixed">
+    <origin xyz="0.0 0.0 0.015" rpy="0.0 0.0 0.0"/>
+    <parent link="base_link"/>
+    <child link="gyro"/>
+  </joint>
   <link name="accelerometer"/>
   <joint name="base_link_accelerometer_joint" type="fixed">
-    <origin xyz="0.0062609983603613365 0.0062412830525937655 0.034674001004381415" rpy="0.00999999999999596 -0.009999999999995996 -0.00999999999999596"/>
+    <origin xyz="0.0008244156733916555 0.00049225321909848 0.014995792462240684" rpy="-3.668874226961156e-05 -7.769112709439543e-05 -0.0007952407141155575"/>
     <parent link="base_link"/>
     <child link="accelerometer"/>
   </joint>
-  <link name="gyroscope"/>
-  <joint name="base_link_gyroscope_joint" type="fixed">
-    <origin xyz="0.0 0.0 0.03" rpy="0.0 0.0 0.0"/>
+  <link name="solid">
+    <visual>
+      <geometry>
+        <box size="0.2 0.1 0.02"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.2 0.1 0.02"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="base_link_solid_joint" type="fixed">
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
     <parent link="base_link"/>
-    <child link="gyroscope"/>
+    <child link="solid"/>
   </joint>
 </robot>

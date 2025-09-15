@@ -52,33 +52,6 @@ class ForceApplierSupervisor:
         if not self.slow_stop_triggered:
             self.slow_stop_triggered = True
 
-        # while (self.robot_node.getVelocity() != [0.0]*6 and self.supervisor.step(self.time_step) != -1 and not rospy.is_shutdown()):
-        #     velocities = self.robot_node.getVelocity()
-
-        #     linear_vels = velocities[0:3]
-        #     angular_vels = velocities[3:6]
-
-        #     self.force_vector = [0.0] * 3
-        #     self.torque_vector = [0.0] * 3
-
-        #     for i in range(3):
-        #         if linear_vels[i] > 0:
-        #             self.force_vector[i] = -0.5
-        #         elif linear_vels[i] < 0:
-        #             self.force_vector[i] = 0.5
-
-        #         if angular_vels[i] > 0:
-        #             self.torque_vector[i] = -0.3
-        #         elif angular_vels[i] < 0:
-        #             self.torque_vector[i] = 0.3
-
-        #     if numpy.linalg.norm(velocities) < 0.01:
-        #         self.robot_node.setVelocity([0]*6)
-        #         self.slow_stop_triggered = False
-        #     else:
-        #         self.robot_node.addForce(self.force_vector, relative=0)
-        #         self.robot_node.addTorque(self.torque_vector, relative=0)
-
     def run(self):
         while self.supervisor.step(self.time_step) != -1 and not rospy.is_shutdown():
 

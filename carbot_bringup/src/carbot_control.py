@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-""" A simple controller for barbot"""
+""" A simple controller for carbot"""
 
 from logging import RootLogger
 from pprint import pprint
@@ -37,13 +37,16 @@ def main():
     """Main control loop."""
     controller = RobotController()
 
-    # Raise it up first
     controller.slow_stop()
+    # rospy.sleep(5)
     
-    
-    controller.add_force(force=[7, 0, 0], duration=2)
-    rospy.sleep(duration=2)
+    # # rospy.sleep(2)
+    # controller.add_force(force=[20, 50, 0], duration=1)
+    # rospy.sleep(duration=1)
     # controller.slow_stop()
+
+    # controller.add_torque(torque=[0, 0, 10], duration=5)
+    # rospy.sleep(duration=5)
     
     rospy.spin()
 
